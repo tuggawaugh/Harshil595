@@ -1,15 +1,4 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 from flask import Flask
-
-
-# In[ ]:
-
-
 app = Flask (__name__)
 @app.route("/")
 def hello():
