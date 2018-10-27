@@ -6,6 +6,8 @@ import quandl
 from pandas import DataFrame, Series 
 from pandas_datareader import data
 #import talib
+import matplotlib
+matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 import plotly
 import plotly.plotly as plty
@@ -19,7 +21,6 @@ from flask import request
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
-
 
 # Display 'Home Page' when user navigates to Root from the URL
 @app.route("/")
