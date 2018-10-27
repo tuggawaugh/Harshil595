@@ -32,8 +32,7 @@ def getStock(name):
     # calculate the sharpe ratio 
     # return the sharpe ratio
     stock = Stock(name)  
-    return str(Stock)
-    print(Stock)
+    return name
  
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5000)
