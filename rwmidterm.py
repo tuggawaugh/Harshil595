@@ -15,6 +15,7 @@ def calcsr():
 @app.route("/")
 def index():
     return "Welcome to my flask app! Please type in http://18.222.187.92:5000/stocks/{enter ticker symbol} to see the price of the stock you enter."
+    return "For example, if you want to see the price of Accenture's stock, enter http://18.222.187.92:5000/stocks/ACN"
 
 @app.route("/hello")
 def hello():
