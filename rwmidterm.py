@@ -14,7 +14,7 @@ def calcsr():
 
 @app.route("/")
 def index():
-    return "Welcome to my flask app! Please type in http://127.0.0.1:5000/members/{enter your name} to get your own page"
+    return "Welcome to my flask app! Please type in http://18.222.187.92:5000/stocks/{enter ticker symbol} to see the price of the stock you enter."
 
 @app.route("/hello")
 def hello():
