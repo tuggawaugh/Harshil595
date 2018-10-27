@@ -82,10 +82,12 @@ def bb(ticker):
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
         
-        return '''<div class="centered"><h1><form method="POST"></div>
+        return '''
+                <div class="container">
+                <div class="centered"><h1><form method="POST">
                 <input name="name">
                 <input type="submit">
-                </form></h1>
+                </form></h1></div></div>
                 <h1><img src="data:image/png;base64,{}"></h1>
                 <h1><img src="data:image/png;base64,{}"></h1>'''.format(plot_url,plot_url) 
         
