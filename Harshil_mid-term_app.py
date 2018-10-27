@@ -63,17 +63,8 @@ def stocks():
     # stock_data.columns.values[[0]]=['Date'] 
     # return stock_data.head() 
     # return stock_data.head().to_html() 
- 
-    # column_indices = [1] 
-    # new_names = ['Low'] 
-    # old_names = stock_data.columns[column_indices] 
-    # stock_data.rename(columns=dict(zip(old_names, new_names)), inplace=True) 
-    # return stock_data.head().to_html() 
- 
-    # stock_data.plot('Open','Close') 
-    # stock_data.savefig(img, format='png') 
+  
     img = io.BytesIO() 
-    # plt.plot(stock_data['Date'],stock_data['Close']) 
     plt.plot(stock_data['Close']) 
     plt.savefig(img, format='png') 
      
