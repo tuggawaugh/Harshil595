@@ -16,7 +16,7 @@ import io
 import base64
 
 from werkzeug.wrappers import Request, Response
-from flask import Flask
+from flask import Flask,redirect,url_for
 from flask import request
 from flask_debugtoolbar import DebugToolbarExtension
 
@@ -46,8 +46,12 @@ def getMember(name):
     return "The length of your name " + name + " is " + str(len(name)) 
  
 # Capture the ticker
-@app.route("/stocks")
+@app.route("/stocks", methods=('GET', 'POST'))
 def stocks():
+    if request.method == 'POST':
+        name = request.form['name']
+        return redirect(url_for('stocks',name=name))    
+
     name = request.args.get('name') #if key doesn't exist, returns None
     ticker=str(name)
     # return ticker
@@ -76,7 +80,10 @@ def stocks():
     img.seek(0) 
      
     plot_url = base64.b64encode(img.getvalue()).decode() 
-    return '''</h1>
+    return '''<form method="POST">
+            <input name="name">
+            <input type="submit">
+            </form></h1>
             <img src="data:image/png;base64,{}"></h1>
             <img src="data:image/png;base64,{}">'''.format(plot_url,plot_url) 
  
