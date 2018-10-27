@@ -32,7 +32,7 @@ def getStock(name):
     # calculate the sharpe ratio 
     # return the sharpe ratio
     stock = Stock(name)  
-    return str(stock.get_time_series())
+    return str(Stock)
  
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5000)
