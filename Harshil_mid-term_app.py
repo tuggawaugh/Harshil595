@@ -46,8 +46,9 @@ def getMember(name):
     return "The length of your name " + name + " is " + str(len(name)) 
  
 # Capture the ticker
-@app.route("/stocks/<string:name>/")
-def getTicker(name):
+@app.route("/stocks")
+def stocks():
+    name = request.args.get('name') #if key doesn't exist, returns None
     ticker=str(name)
     # return ticker
     start_date = '2016-01-01'
