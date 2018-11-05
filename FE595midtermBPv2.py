@@ -79,10 +79,10 @@ def stockplot(ticker):
 # obtain ticker data for the set time period from yahoo
 @app.route("/stocks/<string:name>/")
 def getStock(name):
-    language = request.args.get('language') #if key doesn't exist, returns None
-    language = language.lower()
-    framework = request.args.get('framework')
-    ticker = request.args['ticker'] #if key doesn't exist, returns a 400, bad request error 
+#    language = request.args.get('language') #if key doesn't exist, returns None
+#    language = language.lower()
+#    framework = request.args.get('framework')
+#    ticker = request.args['ticker'] #if key doesn't exist, returns a 400, bad request error 
     return stockplot(name)
 #    '''<h1>The language value is: {}</h1>
 #    <h1>The framework value is: {}</h1>
