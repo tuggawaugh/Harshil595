@@ -46,13 +46,29 @@ def get_adj_close(ticker, start, end):
 def stockplot(ticker):
     img = io.BytesIO()
     tick1 = get_adj_close(ticker, '1/2/2017', '26/10/2018')
-    tick1[['Adj Close']].plot(figsize=(10,10)) 
+    tick1[['Adj Close']].plot(figsize=(10,6)) 
+    ma50 = pd.rolling_mean(df['Adj Close'], 50)
+    ma50[['ma50']].plot(figsize=(10,6)) 
     plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
     img.seek(0)
-    plot_url = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plot_url)
+    plots = base64.b64encode(img.getvalue()).decode()
+    return '<img src="data:image/png;base64,{}">'.format(plots)
+
+#    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
+#    plots = df[['Adj Close', 'ma50']].plot(subplots=False, figsize=(10, 10))
+#    plt.title('Historical Price Trend')
+#    plt.ylabel('Price (USD)')
+#    plt.savefig(img, format='png')
+#    img.seek(0)
+#    plots = base64.b64encode(img.getvalue()).decode()
+#    return '<img src="data:image/png;base64,{}">'.format(plot
+
+
+# References 
+# https://ntguardian.wordpress.com/2018/07/17/stock-data-analysis-python-v2/
+# https://scotch.io/bar-talk/processing-incoming-request-data-in-flask
 
 
 # In[ ]:
