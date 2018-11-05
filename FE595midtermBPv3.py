@@ -52,8 +52,15 @@ def stockplot(ticker):
     plt.savefig(img, format='png')
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plots)
-
+    language = request.args.get('language') #if key doesn't exist, returns None
+    language = language.lower()
+    framework = request.args.get('framework')
+    website = request.args['website'] #if key doesn't exist, returns a 400, bad request error
+    return ''''<h1>The trend is: {}</h1>
+            <h1>The language value is: {}</h1>
+            <h1>The framework value is: {}</h1>
+            <h1>The website value is: {}'''.format(plots, language, framework, website)
+ 
 
 #    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
 #    plots = df[['Adj Close', 'ma50']].plot(subplots=True, figsize=(10, 10))
