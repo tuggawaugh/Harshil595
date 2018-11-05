@@ -46,8 +46,8 @@ def get_adj_close(ticker, start, end):
 def stockplot(ticker):
     img = io.BytesIO()
     tick1 = get_adj_close(ticker, '1/2/2017', '26/10/2018')
-    tick1[['Adj Close']].plot(figsize=(12,6)) 
-    plt.title('Price History')
+    tick1[['Adj Close']].plot(figsize=(10,10)) 
+    plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
     img.seek(0)
