@@ -75,8 +75,11 @@ def getStock(name):
 
 @app.route('/movingavg')
 def movingavg():
+    img = io.BytesIO()
+    tick1 = get_adj_close(ticker, '01/01/2016', '31/12/2017')
+    tick1[['Adj Close']].plot(figsize=(10,6)) 
     df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
-    plots = df[['Adj Close', 'ma50']].plot(subplots=True, figsize=(10, 10))
+    plots = df[['Adj Close', 'ma50']].plot(figsize=(10,6))
     plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
