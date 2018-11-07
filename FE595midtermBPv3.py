@@ -92,7 +92,7 @@ def getStock(name):
 
 
 @app.route("/movingavg/<string:name>/")
-def getStock(name):
+def getma(name):
        return movingavg(name)
 
 
