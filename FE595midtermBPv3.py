@@ -1,6 +1,8 @@
 
 # coding: utf-8
 
+# ## FE595 Fall 2018 Midterm 
+
 # In[2]:
 
 
@@ -28,7 +30,8 @@ app = Flask (__name__)
 # In[4]:
 
 
-# define a function that returns a dataframe of data from yahoo based on selected stock symbol using panda data reader
+# define a function that returns a dataframe sourced from yahoo data for a given stock symbol using 
+# panda data reader to connect
 
 def get_adj_close(ticker, start, end):
     
@@ -41,15 +44,14 @@ def get_adj_close(ticker, start, end):
 # In[5]:
 
 
-# create the historical trend plot based on ticker input
+# create a function that outputs a historical trend plot based on ticker input
 
 def stockplot(ticker):
     img = io.BytesIO()
     tick = get_adj_close(ticker, '01/01/2016', '31/12/2017')
-    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
-    #tick[['Adj Close']].plot(figsize=(10,6)) 
-    
-    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
+#    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
+    tick[['Adj Close']].plot(figsize=(10,6)) 
+#    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
     plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
@@ -65,7 +67,8 @@ def stockplot(ticker):
 # In[6]:
 
 
-# obtain ticker data for the set time period from yahoo
+# based on the stock ticker symbol that is entered at the end of the url, the stockplot function will be 
+# invoked and return a historical trend plot for a 1 year period from Jan 1 2016 to Dec 31 2017
 
 @app.route("/stocks/<string:name>/")
 def getStock(name):
@@ -75,7 +78,7 @@ def getStock(name):
 # In[ ]:
 
 
-# when user navigates to /helloworld, text in the return will be displayed.
+# when user navigates to /helloworld when the flask app is running, text specified below will be displayed.
 
 @app.route("/helloworld")
 def hello():
