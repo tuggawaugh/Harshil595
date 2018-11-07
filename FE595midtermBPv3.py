@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 # import libraries
@@ -16,7 +16,7 @@ import io
 import base64 
 
 
-# In[2]:
+# In[3]:
 
 
 # create the flask app
@@ -25,7 +25,7 @@ from flask import Flask
 app = Flask (__name__)
 
 
-# In[3]:
+# In[4]:
 
 
 # define a function that returns a dataframe of data from yahoo based on selected stock symbol using panda data reader
@@ -38,7 +38,7 @@ def get_adj_close(ticker, start, end):
         return pd.DataFrame(info)
 
 
-# In[4]:
+# In[5]:
 
 
 # create the historical trend plot based on ticker input
@@ -51,19 +51,22 @@ def stockplot(ticker):
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
     img.seek(0)
-    
     plots = base64.b64encode(img.getvalue()).decode()
+    return '<img src="data:image/png;base64,{}">'.format(plots)
+
+def stockplot2(ticker2):
+    img2 = io.BytesIO()
+    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
+    plots2 = df[['Adj Close', 'ma50']].plot(subplots=True, figsize=(10, 10))
+    #tick1 = get_adj_close(ticker, '01/01/2016', '31/12/2017')
+    #tick1[['Adj Close']].plot(figsize=(10,6)) 
+    plt.title('Historical Price Trend')
+    plt.ylabel('Price (USD)')
+    plt.savefig(img2, format='png')
+    img.seek(0)
     
-    language = request.args.get('language') 
-    #if key doesn't exist, returns None
-    language = language.lower()
-    framework = request.args.get('framework')
-    website = request.args['website'] 
-    #if key doesn't exist, returns a 400, bad request error
- 
-    return '''<h1>The language value is: {}</h1>
-              <h1>The framework value is: {}</h1>
-              <img src="data:image/png;base64,{}">'''.format(language, framework, plots)
+    plots2 = base64.b64encode(img.getvalue()).decode()
+    return '<img src="data:image/png;base64,{}">'.format(plots2)
 
 
 #    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
@@ -81,7 +84,7 @@ def stockplot(ticker):
 # https://scotch.io/bar-talk/processing-incoming-request-data-in-flask
 
 
-# In[5]:
+# In[6]:
 
 
 # obtain ticker data for the set time period from yahoo
