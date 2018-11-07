@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 # import libraries
@@ -16,7 +16,7 @@ import io
 import base64 
 
 
-# In[ ]:
+# In[2]:
 
 
 # create the flask app
@@ -25,7 +25,7 @@ from flask import Flask
 app = Flask (__name__)
 
 
-# In[ ]:
+# In[3]:
 
 
 # define a function that returns a dataframe of data from yahoo based on selected stock symbol using panda data reader
@@ -38,7 +38,7 @@ def get_adj_close(ticker, start, end):
         return pd.DataFrame(info)
 
 
-# In[ ]:
+# In[4]:
 
 
 # create the historical trend plot based on ticker input
@@ -63,7 +63,6 @@ def stockplot(ticker):
  
     return '''<h1>The language value is: {}</h1>
               <h1>The framework value is: {}</h1>
-              <img src="data:image/png;base64,{}">.format(plot_url,plot_url)  
               <img src="data:image/png;base64,{}">'''.format(language, framework, plots)
 
 
@@ -82,7 +81,7 @@ def stockplot(ticker):
 # https://scotch.io/bar-talk/processing-incoming-request-data-in-flask
 
 
-# In[ ]:
+# In[5]:
 
 
 # obtain ticker data for the set time period from yahoo
