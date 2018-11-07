@@ -46,11 +46,10 @@ def get_adj_close(ticker, start, end):
 def stockplot(ticker):
     img = io.BytesIO()
     tick = get_adj_close(ticker, '01/01/2016', '31/12/2017')
-    ma50 = pd.rolling_mean(df['Adj Close'], 50)
+    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
     #tick[['Adj Close']].plot(figsize=(10,6)) 
     
     tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
-#    plots = df[['Adj Close', 'ma50']].plot(figsize=(10,6))
     plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
