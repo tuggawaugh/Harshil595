@@ -45,9 +45,13 @@ def get_adj_close(ticker, start, end):
 
 def stockplot(ticker):
     img = io.BytesIO()
-    tick1 = get_adj_close(ticker, '01/01/2016', '31/12/2017')
-    tick1[['Adj Close']].plot(figsize=(10,6)) 
-    plt.title('Historical Price Trend')
+    tick = get_adj_close(ticker, '01/01/2016', '31/12/2017')
+    ma50 = pd.rolling_mean(df['Adj Close'], 50)
+    #tick[['Adj Close']].plot(figsize=(10,6)) 
+    
+    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
+#    plots = df[['Adj Close', 'ma50']].plot(figsize=(10,6))
+     plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
     img.seek(0)
@@ -56,25 +60,6 @@ def stockplot(ticker):
 
 # References 
 # https://scotch.io/bar-talk/processing-incoming-request-data-in-flask
-
-
-# In[ ]:
-
-
-def movingavg(ticker):
-    img = io.BytesIO()
-    tick1 = get_adj_close(ticker, '01/01/2016', '31/12/2017')
-    tick1[['Adj Close']].plot(figsize=(10,6)) 
-    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
-    plots = df[['Adj Close', 'ma50']].plot(figsize=(10,6))
-    plt.title('Historical Price Trend')
-    plt.ylabel('Price (USD)')
-    plt.savefig(img, format='png')
-    img.seek(0)
-    plots = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plots)
-
-# References 
 # https://ntguardian.wordpress.com/2018/07/17/stock-data-analysis-python-v2/
 
 
@@ -86,14 +71,6 @@ def movingavg(ticker):
 @app.route("/stocks/<string:name>/")
 def getStock(name):
        return stockplot(name)
-
-
-# In[ ]:
-
-
-@app.route("/movingavg/<string:name>/")
-def getma(name):
-       return movingavg(name)
 
 
 # In[ ]:
