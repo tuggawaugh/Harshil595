@@ -55,26 +55,13 @@ def stockplot(ticker):
     return '<img src="data:image/png;base64,{}">'.format(plots)
 
 # References 
-# https://ntguardian.wordpress.com/2018/07/17/stock-data-analysis-python-v2/
 # https://scotch.io/bar-talk/processing-incoming-request-data-in-flask
-
-
-# In[6]:
-
-
-# obtain ticker data for the set time period from yahoo
-
-@app.route("/stocks/<string:name>/")
-def getStock(name):
-       return stockplot(name)
 
 
 # In[ ]:
 
 
-
-@app.route('/movingavg')
-def movingavg():
+def movingavg(ticker):
     img = io.BytesIO()
     tick1 = get_adj_close(ticker, '01/01/2016', '31/12/2017')
     tick1[['Adj Close']].plot(figsize=(10,6)) 
@@ -86,6 +73,30 @@ def movingavg():
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
     return '<img src="data:image/png;base64,{}">'.format(plots)
+
+# References 
+# https://ntguardian.wordpress.com/2018/07/17/stock-data-analysis-python-v2/
+
+
+# In[6]:
+
+
+# obtain ticker data for the set time period from yahoo
+
+@app.route("/stocks/<string:name>/")
+def getStock(name):
+       return stockplot(name)
+    
+
+
+# In[ ]:
+
+
+# when user navigates to /helloworld, text in the return will be displayed.
+
+@app.route("/helloworld")
+def hello():
+    return "Hello World! This is Binta's first flask app"
 
 
 # In[ ]:
