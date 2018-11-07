@@ -51,7 +51,7 @@ def stockplot(ticker):
     
     tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
 #    plots = df[['Adj Close', 'ma50']].plot(figsize=(10,6))
-     plt.title('Historical Price Trend')
+    plt.title('Historical Price Trend')
     plt.ylabel('Price (USD)')
     plt.savefig(img, format='png')
     img.seek(0)
