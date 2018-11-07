@@ -86,7 +86,14 @@ def movingavg(ticker):
 @app.route("/stocks/<string:name>/")
 def getStock(name):
        return stockplot(name)
-    
+
+
+# In[ ]:
+
+
+@app.route("/movingavg/<string:name>/")
+def getStock(name):
+       return movingavg(name)
 
 
 # In[ ]:
