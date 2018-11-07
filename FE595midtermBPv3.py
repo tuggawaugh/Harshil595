@@ -28,7 +28,7 @@ app = Flask (__name__)
 # In[ ]:
 
 
-# define a function that returns a dataframe of data from yahoo based on selected stock symbol
+# define a function that returns a dataframe of data from yahoo based on selected stock symbol using panda data reader
 
 def get_adj_close(ticker, start, end):
     
@@ -52,7 +52,13 @@ def stockplot(ticker):
     plt.savefig(img, format='png')
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plots) 
+    
+    return '''<form method="POST">
+            <input name="name">
+            <input type="submit">
+            </form></h1>
+            <img src="data:image/png;base64,{}">'''.format(plots) 
+
 
 #    df['ma50'] = pd.rolling_mean(df['Adj Close'], 50)
 #    plots = df[['Adj Close', 'ma50']].plot(subplots=True, figsize=(10, 10))
