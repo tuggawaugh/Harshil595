@@ -63,6 +63,7 @@ def stocks():
     stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date) 
     spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date) 
   
+    img1 = ""
     img1 = io.BytesIO() 
     plt.plot(stock_data['Close']) 
     plt.savefig(img1, format='png') 
@@ -70,6 +71,7 @@ def stocks():
     plot1_url = ""
     plot1_url = base64.b64encode(img1.getvalue()).decode() 
 
+    img2 = ""
     img2 = io.BytesIO() 
     plt.plot(spy_data['Close']) 
     plt.savefig(img2, format='png') 
