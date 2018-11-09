@@ -59,6 +59,7 @@ def stocks():
     end_date = '2016-12-31'
     # User pandas_reader.data.DataReader to load the desired data. As simple as that. 
     stock_data = pd.DataFrame() 
+    spy_data = pd.DataFrame() 
     stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date) 
     spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date) 
   
