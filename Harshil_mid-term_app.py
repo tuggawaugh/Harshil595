@@ -59,29 +59,26 @@ def stocks():
     end_date = '2016-12-31'
     # User pandas_reader.data.DataReader to load the desired data. As simple as that. 
     stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date) 
-    # stock_data.rename(columns={stock_data.columns[1]: "Date" }) 
-    # stock_data.columns.values[[0]]=['Date'] 
-    # return stock_data.head() 
-    # return stock_data.head().to_html() 
+    spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date) 
   
-    img = io.BytesIO() 
+    img1 = io.BytesIO() 
+    img2 = io.BytesIO() 
     plt.plot(stock_data['Close']) 
-    plt.savefig(img, format='png') 
+    plt.savefig(img1, format='png') 
+    img1.seek(0) 
+    plot1_url = base64.b64encode(img1.getvalue()).decode() 
+
+    plt.plot(spy_data['Close']) 
+    plt.savefig(img2, format='png') 
+    img2.seek(0) 
+    plot2_url = base64.b64encode(img2.getvalue()).decode() 
      
-    img.seek(0) 
-     
-    plot_url = base64.b64encode(img.getvalue()).decode() 
     return '''<form method="POST">
             <input name="name">
             <input type="submit">
             </form></h1>
             <img src="data:image/png;base64,{}"></h1>
-            <img src="data:image/png;base64,{}">'''.format(plot_url,plot_url) 
- 
-    # return stock_data.to_html(classes='stock') 
-    # return '''<h1> ticker </h1> 
-    #          <h1> Chart </h1>'''.format(ticker, stock_data.to_html(classes='stock')) 
- 
+            <img src="data:image/png;base64,{}">'''.format(plot1_url,plot2_url) 
  
  
 @app.route('/query-example')
