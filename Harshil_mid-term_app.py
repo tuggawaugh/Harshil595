@@ -63,21 +63,21 @@ def stocks():
     stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date) 
     spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date) 
   
-    img1 = ""
-    img1 = io.BytesIO() 
+    img11 = ""
+    img11 = io.BytesIO() 
     plt.plot(stock_data['Close']) 
-    plt.savefig(img1, format='png') 
-    img1.seek(0)
+    plt.savefig(img11, format='png') 
+    img11.seek(0)
     plot1_url = ""
-    plot1_url = base64.b64encode(img1.getvalue()).decode() 
+    plot1_url = base64.b64encode(img11.getvalue()).decode() 
 
-    img2 = ""
-    img2 = io.BytesIO() 
+    img22 = ""
+    img22 = io.BytesIO() 
     plt.plot(spy_data['Close']) 
-    plt.savefig(img2, format='png') 
-    img2.seek(0) 
+    plt.savefig(img22, format='png') 
+    img22.seek(0) 
     plot2_url = ""
-    plot2_url = base64.b64encode(img2.getvalue()).decode() 
+    plot2_url = base64.b64encode(img22.getvalue()).decode() 
      
     return '''<form method="POST">
             <input name="name">
