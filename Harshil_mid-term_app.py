@@ -65,7 +65,7 @@ def stocks():
     img2 = io.BytesIO() 
     plt.plot(stock_data['Close']) 
     plt.savefig(img1, format='png') 
-    img1.seek(0) 
+    img1.seek(0)
     plot1_url = base64.b64encode(img1.getvalue()).decode() 
 
     plt.plot(spy_data['Close']) 
