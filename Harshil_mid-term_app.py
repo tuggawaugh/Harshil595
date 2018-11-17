@@ -74,7 +74,7 @@ def stocks():
 
     # img22 = ""
     img22 = io.BytesIO() 
-    plt.clf()
+    # plt.clf()
     plt.plot(spy_data['Close']) 
     plt.savefig(img22, format='png') 
     img22.seek(0) 
