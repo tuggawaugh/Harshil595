@@ -63,30 +63,52 @@ def stocks():
     stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date) 
     spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date) 
   
-    # img11 = ""
+
     img11 = io.BytesIO() 
     plt.clf()
-    plt.plot(stock_data['Close']) 
+# Now switch to a more OO interface to exercise more features.
+    fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
+    ax = axs[0]
+    ax.plot(stock_data['Close'])
+    ax.set_title(ticker+' Close Price (2016)')
+
+    ax = axs[1]
+    ax.plot(spy_data['Close'])
+    ax.set_title('S&P 500 Close Price (2016)')
+
+    fig.suptitle(ticker)
     plt.savefig(img11, format='png') 
     img11.seek(0)
     plot1_url = ""
     plot1_url = base64.b64encode(img11.getvalue()).decode() 
+    
 
-    # img22 = ""
-    img22 = io.BytesIO() 
-    # plt.clf()
-    plt.plot(spy_data['Close']) 
-    plt.savefig(img22, format='png') 
-    img22.seek(0) 
-    plot2_url = ""
-    plot2_url = base64.b64encode(img22.getvalue()).decode() 
+    # img11 = ""
+#    img11 = io.BytesIO() 
+#    plt.clf()
+#    plt.plot(stock_data['Close']) 
+#    plt.title(ticker, loc='left')
+#    plt.savefig(img11, format='png') 
+#    img11.seek(0)
+#    plot1_url = ""
+#    plot1_url = base64.b64encode(img11.getvalue()).decode() 
+#
+#    # img22 = ""
+#    img22 = io.BytesIO() 
+#    # plt.clf()
+#    plt.plot(spy_data['Close']) 
+#    plt.savefig(img22, format='png') 
+#    img22.seek(0) 
+#    plot2_url = ""
+#    plot2_url = base64.b64encode(img22.getvalue()).decode() 
+#
+
      
     return '''<form method="POST">
             <input name="name">
             <input type="submit">
             </form></h1>
-            <img src="data:image/png;base64,{}"></h1>
-            <img src="data:image/png;base64,{}">'''.format(plot1_url,plot2_url) 
+            <img src="data:image/png;base64,{}">'''.format(plot1_url) 
  
  
 @app.route('/query-example')
