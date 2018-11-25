@@ -73,7 +73,7 @@ def stocks():
     ax = axs[0]
     ax.plot(stock_data['Close'])
     ax.set_title(ticker+' Close Price (2016)')
-    myFmt = DateFormatter("%d"+"%m")
+    myFmt = DateFormatter("%m")
     ax.xaxis.set_major_formatter(myFmt)
 
     ax = axs[1]
