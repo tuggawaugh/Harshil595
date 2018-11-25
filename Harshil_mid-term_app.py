@@ -71,18 +71,18 @@ def stocks():
 # Now switch to a more OO interface to exercise more features.
     fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
     ax = axs[0]
-    ax.plot(stock_data['Close'])
+    ax.plot(stock_data['Close'], marker='', linestyle='-')
     ax.set_title(ticker+' Close Price (2016)')
     # myFmt = DateFormatter("%m")
     # ax.xaxis.set_major_formatter(myFmt)
     time = pd.date_range('01/01/2016', '12/31/2016', freq='H')
     values = np.random.normal(0, 1, time.size).cumsum()
-    ax.plot_date(stock_data['Close'], marker='', linestyle='-')
+    # ax.plot_date(stock_data['Close'], marker='', linestyle='-')
 
     ax = axs[1]
     ax.plot(spy_data['Close'])
     ax.set_title('S&P 500 Close Price (2016)')
-    ax.plot_date(spy_data['Close'], marker='', linestyle='-')
+    # ax.plot_date(spy_data['Close'], marker='', linestyle='-')
     # ax.xaxis.set_major_formatter(myFmt)
 
 # Format the Dates
