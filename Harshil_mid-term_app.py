@@ -9,6 +9,8 @@ from pandas_datareader import data
 import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
+from datetime import datetime
+from matplotlib.dates import DateFormatter
 import plotly
 import plotly.plotly as plty
 import plotly.graph_objs as go
@@ -71,11 +73,26 @@ def stocks():
     ax = axs[0]
     ax.plot(stock_data['Close'])
     ax.set_title(ticker+' Close Price (2016)')
+    myFmt = DateFormatter("%d")
+    ax.xaxis.set_major_formatter(myFmt)
 
     ax = axs[1]
     ax.plot(spy_data['Close'])
     ax.set_title('S&P 500 Close Price (2016)')
+    ax.xaxis.set_major_formatter(myFmt)
 
+# Format the Dates
+#    myDates = [datetime(2012,1,i+3) for i in range(10)]
+#    myValues = [5,6,4,3,7,8,1,2,5,4]
+#    fig, ax = plt.subplots()
+#    ax.plot(myDates,myValues)
+
+
+    ## Rotate date labels automatically
+    fig.autofmt_xdate()
+    plt.show()
+
+# Publish the Graph
     fig.suptitle(ticker)
     plt.savefig(img11, format='png') 
     img11.seek(0)
