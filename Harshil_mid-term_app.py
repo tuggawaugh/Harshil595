@@ -73,13 +73,17 @@ def stocks():
     ax = axs[0]
     ax.plot(stock_data['Close'])
     ax.set_title(ticker+' Close Price (2016)')
-    myFmt = DateFormatter("%m")
-    ax.xaxis.set_major_formatter(myFmt)
+    # myFmt = DateFormatter("%m")
+    # ax.xaxis.set_major_formatter(myFmt)
+    time = pd.date_range('01/01/2016', '12/31/2016', freq='H')
+    values = np.random.normal(0, 1, time.size).cumsum()
+    ax.plot_date(time, values, marker='', linestyle='-')
 
     ax = axs[1]
     ax.plot(spy_data['Close'])
     ax.set_title('S&P 500 Close Price (2016)')
-    ax.xaxis.set_major_formatter(myFmt)
+    ax.plot_date(time, values, marker='', linestyle='-')
+    # ax.xaxis.set_major_formatter(myFmt)
 
 # Format the Dates
 #    myDates = [datetime(2012,1,i+3) for i in range(10)]
