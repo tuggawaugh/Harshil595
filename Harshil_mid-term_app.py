@@ -33,7 +33,7 @@ def index():
 # Display 'Instruction message' when user navigates to /help page 
 @app.route("/help") 
 def hello(): 
-    return "Enter the Ticker Symbol in the Searchbox" 
+    return "There are 2 options to compare a stock's performance with S&P 500: 1) Enter the Ticker Symbol in the Searchbox and b) Use http://18.223.99.235:9000/stocks?name=XXX URL format where XXX is the Ticker Symbol" 
   
 # Capture the ticker
 @app.route("/stocks", methods=('GET', 'POST'))
