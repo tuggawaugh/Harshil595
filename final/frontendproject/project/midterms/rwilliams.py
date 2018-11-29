@@ -10,7 +10,7 @@ def call_rwilliams():
 
 
 routes.append(dict(
-    rule='/call_rwilliams/',
+    rule='/rwilliams/',
     view_func=call_rwilliams))
 
 
@@ -19,6 +19,6 @@ def call_rwilliams_2():
 
 
 routes.append(dict(
-    rule='/call_rwilliams_2/',
+    rule='/rwilliams_2/',
     view_func=call_rwilliams_2,
     options=dict(methods=['GET', 'POST'])))

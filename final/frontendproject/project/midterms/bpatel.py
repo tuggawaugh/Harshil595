@@ -10,7 +10,7 @@ def call_bpatel():
 
 
 routes.append(dict(
-    rule='/call_bpatel/',
+    rule='/bpatel/',
     view_func=call_bpatel))
 
 
@@ -19,6 +19,6 @@ def call_bpatel_2():
 
 
 routes.append(dict(
-    rule='/call_bpatel_2/',
+    rule='/bpatel_2/',
     view_func=call_bpatel_2,
     options=dict(methods=['GET', 'POST'])))

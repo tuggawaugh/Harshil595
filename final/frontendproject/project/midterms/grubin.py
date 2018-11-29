@@ -10,7 +10,7 @@ def call_grubin():
 
 
 routes.append(dict(
-    rule='/call_grubin/',
+    rule='/grubin/',
     view_func=call_grubin))
 
 
@@ -19,6 +19,6 @@ def call_grubin_2():
 
 
 routes.append(dict(
-    rule='/call_grubin_2/',
+    rule='/grubin_2/',
     view_func=call_grubin_2,
     options=dict(methods=['GET', 'POST'])))
