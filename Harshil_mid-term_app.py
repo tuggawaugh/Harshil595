@@ -90,7 +90,7 @@ def stocks():
     plt.show()
 
 # Publish the Graph
-    fig.suptitle(ticker+' v S&P 500 Comparison')
+    fig.suptitle(ticker+' v S&P 500 Comparison (2016)')
     plt.savefig(img11, format='png') 
     img11.seek(0)
     plot1_url = ""
