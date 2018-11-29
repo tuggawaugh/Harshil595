@@ -27,26 +27,14 @@ app = Flask(__name__)
 # Display 'Home Page' when user navigates to Root from the URL 
 @app.route("/") 
 def index(): 
-    return "Home Page" 
+    return "Hello World! Mid-Term Flask App by Harshil Shah" 
  
  
-# Display 'Hello World' when user navigates to /hello page 
-@app.route("/hello") 
+# Display 'Instruction message' when user navigates to /help page 
+@app.route("/help") 
 def hello(): 
-    return "Hello World! Program Run #20" 
- 
- 
-# Display message requesting name when user navigates to /members page 
-@app.route("/members") 
-def members(): 
-    return "Put your Member name in the URL" 
- 
- 
-# Display the character count of the name provided in /members/name page 
-@app.route("/members/<string:name>/")
-def getMember(name):
-    return "The length of your name " + name + " is " + str(len(name)) 
- 
+    return "Enter the Ticker Symbol in the Searchbox" 
+  
 # Capture the ticker
 @app.route("/stocks", methods=('GET', 'POST'))
 def stocks():
@@ -78,12 +66,6 @@ def stocks():
     ax.plot(spy_data['Close'], marker='', linestyle='-')
     ax.set_title('S&P 500 Close Price (2016)')
 
-# Format the Dates
-#    myDates = [datetime(2012,1,i+3) for i in range(10)]
-#    myValues = [5,6,4,3,7,8,1,2,5,4]
-#    fig, ax = plt.subplots()
-#    ax.plot(myDates,myValues)
-
 
     ## Rotate date labels automatically
     fig.autofmt_xdate()
@@ -96,27 +78,6 @@ def stocks():
     plot1_url = ""
     plot1_url = base64.b64encode(img11.getvalue()).decode() 
     
-
-    # img11 = ""
-#    img11 = io.BytesIO() 
-#    plt.clf()
-#    plt.plot(stock_data['Close']) 
-#    plt.title(ticker, loc='left')
-#    plt.savefig(img11, format='png') 
-#    img11.seek(0)
-#    plot1_url = ""
-#    plot1_url = base64.b64encode(img11.getvalue()).decode() 
-#
-#    # img22 = ""
-#    img22 = io.BytesIO() 
-#    # plt.clf()
-#    plt.plot(spy_data['Close']) 
-#    plt.savefig(img22, format='png') 
-#    img22.seek(0) 
-#    plot2_url = ""
-#    plot2_url = base64.b64encode(img22.getvalue()).decode() 
-#
-
      
     return '''<form method="POST">
             <input name="name">
