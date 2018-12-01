@@ -26,7 +26,7 @@ var DynamicSearch = React.createClass({
 
     return (
       <div>
-        <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search!" />
+        <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Enter Ticker" />
         <ul>
           { countries.map(function(country){ return <li>{country.name} </li> }) }
         </ul>

@@ -1,15 +1,17 @@
 """
 """
 
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 
 mod = Blueprint('midterms', __name__)
 
 
 @mod.route('/')
-def home():
-    return 'Midterms Folder'
+def hello():
+    return render_template('hello.html')
+#def home():
+#    return 'Midterms Folder'
 
 
 from .bpatel import routes as bpatel_routes
