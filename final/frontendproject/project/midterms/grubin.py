@@ -88,6 +88,5 @@ def bb(ticker):
                 <input name="name">
                 <input type="submit">
                 </form></h1></div></div>
-                <h1><img src="data:image/png;base64,{}"></h1>
-                <h1><img src="data:image/png;base64,{}"></h1>'''.format(ticker, plot_url, plot_url) 
+                <h1><img src="data:image/png;base64,{}"></h1>'''.format(ticker, plot_url) 
         
