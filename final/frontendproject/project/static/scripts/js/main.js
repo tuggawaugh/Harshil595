@@ -17,12 +17,14 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
         // 'keypress' event misbehaves on mobile so we track 'Enter' key via 'keydown' event
         if (event.key === 'Enter') {
 			console.log("Enter Key!");
-		  event.preventDefault();
-          event.stopPropagation();
-		  window.open('midterms/bpatel', "_blank")
-		  window.open('midterms/grubin', "_blank")
-		  window.open('midterms/hshah', "_blank")
-		  window.open('midterms/rwilliams', "_blank")
+			console.log(event.target.value);
+			event.preventDefault();
+			event.stopPropagation();
+			window.open('midterms/', "_blank")
+			window.open('midterms/bpatel', "_blank")
+			window.open('midterms/grubin/?name='+event.target.value, "_blank")
+			window.open('midterms/hshah', "_blank")
+			window.open('midterms/rwilliams', "_blank")
 		  
 		  
 //          this.onSubmit();
