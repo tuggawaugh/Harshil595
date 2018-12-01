@@ -13,6 +13,22 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
     console.log("scope updated!");
   },
 
+  onKeyDown: function(event){
+        // 'keypress' event misbehaves on mobile so we track 'Enter' key via 'keydown' event
+        if (event.key === 'Enter') {
+			console.log("Enter Key!");
+		  event.preventDefault();
+          event.stopPropagation();
+		  window.open('midterms/bpatel', "_blank")
+		  window.open('midterms/grubin', "_blank")
+		  window.open('midterms/hshah', "_blank")
+		  window.open('midterms/rwilliams', "_blank")
+		  
+		  
+//          this.onSubmit();
+        }
+      },
+
   render: function() {
 
     var countries = this.props.items;
@@ -27,7 +43,7 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
 
     return (
       React.createElement("div", null, 
-        React.createElement("input", {type: "text", value: this.state.searchString, onChange: this.handleChange, placeholder: "Enter Ticker"}), 
+        React.createElement("input", {type: "text", value: this.state.searchString, onChange: this.handleChange, onKeyDown: this.onKeyDown, placeholder: "Enter Ticker"}), 
         React.createElement("ul", null, 
            countries.map(function(country){ return React.createElement("li", null, country.name, " ") }) 
         )
