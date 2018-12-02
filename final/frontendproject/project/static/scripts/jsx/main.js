@@ -49,7 +49,7 @@ var countries = [
     {"name": "WFT"}
 ];
 
-import stockSymbols from '/Users/gordon.rubin/Documents/stevens/fe-595-ws/midterm/Harshil595/csvjson2.json';
+// import stockSymbols from '/Users/gordon.rubin/Documents/stevens/fe-595-ws/midterm/Harshil595/csvjson2.json';
 
 ReactDOM.render(
   <DynamicSearch items={ countries } />,
