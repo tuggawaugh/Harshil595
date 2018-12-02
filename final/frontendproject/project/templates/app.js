@@ -2,7 +2,7 @@ import React from 'react'
 import DOM from 'react-dom'
 import Autocomplete from '../../lib/index'
 import { getStates, fakeRequest } from '../../lib/utils'
-import stockSymbols from '/Users/gordon.rubin/Documents/stevens/fe-595-ws/midterm/Harshil595/csvjson2.json';
+import stockSymbols from '../../csvjson2.json';
 
 
 class App extends React.Component {
@@ -17,14 +17,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Async Data</h1>
+        <h1>Stock Look-up</h1>
         <p>
-          Autcomplete works great with async data by allowing you to pass in
-          items. The <code>onChange</code> event provides you the value to make
-          a server request with, then change state and pass in new items, it will
-          attempt to autocomplete the first one.
+          This is a simple front-end that provides suggestions based on the typed search input. Suggested securities are listings from common US exchanges (NYSE, NASDAQ, AMEX).
         </p>
-        <label htmlFor="states-autocomplete">Choose a state from the US</label>
+        <label htmlFor="states-autocomplete">Enter a ticker:</label>
         <Autocomplete
           inputProps={{ id: 'states-autocomplete' }}
           wrapperStyle={{ position: 'relative', display: 'inline-block' }}
@@ -53,8 +50,8 @@ class App extends React.Component {
           renderItem={(item, isHighlighted) => (
             <div
               className={`item ${isHighlighted ? 'item-highlighted' : ''}`}
-              key={item.abbr}
-            >{item.name}</div>
+              key={item.abbr + item.name + item.exchange}
+            >{''+ item.abbr + '  ' + item.name + '  ' + item.exchange}</div>
           )}
         />
       </div>
