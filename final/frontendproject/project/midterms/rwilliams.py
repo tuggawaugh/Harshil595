@@ -45,7 +45,7 @@ def bb(ticker):
         plt.savefig(img, format='png')
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
-        return ''''<h1>Ticker Symbol: {}</h1>
+        return ''''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2018)</h1>
 				<form method="POST">
 				<input name="name">
 				<input type="submit">
