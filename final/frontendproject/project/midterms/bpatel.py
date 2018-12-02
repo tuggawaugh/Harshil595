@@ -39,7 +39,7 @@ def stockplot(ticker):
 def getStock():
     if request.method == 'POST':
         name = request.form['name']
-        return redirect(url_for('midterms.stocks_bpatel', name=name))
+        return redirect(url_for('midterms.bpatel', name=name))
         # Stock name is redirected back to the URL for it to be captured by Get
 
     name = request.args.get('name', default='MSFT')  # if key doesn't exist, returns None
