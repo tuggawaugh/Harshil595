@@ -9,10 +9,10 @@ from pandas_datareader import data as web
 from flask import Flask,redirect,url_for
 from flask import Blueprint, render_template
 from flask import request
-from iexfinance import Stock
-import plotly
-import plotly.plotly as plty
-import plotly.graph_objs as go
+# from iexfinance import Stock
+# import plotly
+# import plotly.plotly as plty
+# import plotly.graph_objs as go
 import io
 import base64 
 
@@ -26,9 +26,9 @@ routes = []
 def stocks():
     if request.method == 'POST':
         name = request.form['name']
-        return redirect(url_for('grubin',name=name))    
+        return redirect(url_for('midterms.grubin',name=name))    
 
-    name = request.args.get('name') #if key doesn't exist, returns None
+    name = request.args.get('name', default='MSFT') #if key doesn't exist, returns None
     ticker=str(name)
     return bb(ticker)
 
