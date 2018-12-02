@@ -36,7 +36,7 @@ def stocks_hshah():
     ticker = str(name)
     # set the start and end date and the first and last day of FY2016
     start_date = '2016-01-01'
-    end_date = '2016-12-31'
+    end_date = '2017-12-31'
     # User pandas_reader.data.DataReader to load the desired stock and
     # S&P ('spy') data into respective frames using Yahoo's API
     stock_data = pd.DataFrame()
