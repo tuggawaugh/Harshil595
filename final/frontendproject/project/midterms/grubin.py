@@ -3,16 +3,11 @@
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
-# matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from pandas_datareader import data as web
 from flask import Flask,redirect,url_for
 from flask import Blueprint, render_template
 from flask import request
-# from iexfinance import Stock
-# import plotly
-# import plotly.plotly as plty
-# import plotly.graph_objs as go
 import io
 import base64 
 
