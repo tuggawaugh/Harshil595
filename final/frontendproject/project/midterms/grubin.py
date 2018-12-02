@@ -2,7 +2,8 @@
 """
 import pandas as pd
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use('Agg')
+# matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from pandas_datareader import data as web
 from flask import Flask,redirect,url_for
