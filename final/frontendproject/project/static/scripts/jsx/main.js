@@ -28,7 +28,7 @@ var DynamicSearch = React.createClass({
       <div>
         <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Enter Ticker" />
         <ul>
-          { countries.map(function(country){ return <li>{country.name} </li> }) }
+          { stockSymbols.map(function(stockSymbols){ return <li>{stockSymbols.name} </li> }) }
         </ul>
       </div>
     )
@@ -48,6 +48,8 @@ var countries = [
     {"name": "ABEV"},
     {"name": "WFT"}
 ];
+
+import stockSymbols from '/Users/gordon.rubin/Documents/stevens/fe-595-ws/midterm/Harshil595/csvjson2.json';
 
 ReactDOM.render(
   <DynamicSearch items={ countries } />,

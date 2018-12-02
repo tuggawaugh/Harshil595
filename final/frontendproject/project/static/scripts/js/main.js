@@ -55,6 +55,8 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
 
 });
 
+//var countries2 = stockSymbols;
+
 // list of countries, defined with JavaScript object literals
 var countries = [
     {"name": "GE"},
@@ -67,6 +69,7 @@ var countries = [
     {"name": "ABEV"},
     {"name": "WFT"}
 ];
+
 
 ReactDOM.render(
   React.createElement(DynamicSearch, {items:  countries }),
