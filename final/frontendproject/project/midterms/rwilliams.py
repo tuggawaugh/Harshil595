@@ -46,7 +46,11 @@ def bb(ticker):
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
         return ''''<h1>Ticker Symbol: {}</h1>
-               <img src="data:image/png;base64,{}">'''.format(ticker, plot_url)
+				<form method="POST">
+				<input name="name">
+				<input type="submit">
+				</form></h1>
+				<img src="data:image/png;base64,{}">'''.format(ticker, plot_url)
 
 #Flask Apps
 #@app.route("/")
