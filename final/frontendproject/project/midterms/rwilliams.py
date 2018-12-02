@@ -28,9 +28,9 @@ def get_adj_close(ticker, start, end):
 
 # Defining the Bollinger Band Function
 def bb(ticker): 
-    # Get Adjusted Closing Prices for Chosen Stock and Tesla between 2017-October 2018
-        tick1 = get_adj_close(ticker, '1/2/2017', '31/10/2018')
-        tesla = get_adj_close('tsla', '1/2/2017', '31/10/2018')
+    # Get Adjusted Closing Prices for Chosen Stock and Tesla between Jan 2016 - December 2017
+        tick1 = get_adj_close(ticker, '1/1/2016', '31/12/2017')
+        tesla = get_adj_close('tsla', '1/1/2016', '31/12/2017')
     # Calculate 30 Day Moving Average, Std Deviation, Upper Band and Lower Band
         for item in (tick1, tesla):
             item['30 Day MA'] = item['Adj Close'].rolling(window=20).mean()
