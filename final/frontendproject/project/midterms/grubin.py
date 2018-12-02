@@ -21,7 +21,7 @@ routes = []
 def stocks():
     if request.method == 'POST':
         name = request.form['name']
-        return redirect(url_for('midterms.grubin',name=name))    
+        return redirect(url_for('midterms.stocks',name=name))    
 
     name = request.args.get('name', default='MSFT') #if key doesn't exist, returns None
     ticker=str(name)

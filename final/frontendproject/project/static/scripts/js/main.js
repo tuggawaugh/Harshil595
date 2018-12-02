@@ -21,10 +21,10 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
 			event.preventDefault();
 			event.stopPropagation();
 			window.open('midterms/', "_blank")
-			window.open('midterms/bpatel', "_blank")
+			window.open('midterms/bpatel/?name='+event.target.value, "_blank")
 			window.open('midterms/grubin/?name='+event.target.value, "_blank")
-			window.open('midterms/hshah', "_blank")
-			window.open('midterms/rwilliams', "_blank")
+			window.open('midterms/hshah/?name='+event.target.value, "_blank")
+			window.open('midterms/rwilliams/?name='+event.target.value, "_blank")
 		  
 		  
 //          this.onSubmit();

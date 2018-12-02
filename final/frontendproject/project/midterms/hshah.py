@@ -70,11 +70,12 @@ def stocks_hshah():
     plot1_url = ""
     plot1_url = base64.b64encode(img11.getvalue()).decode()
 
-    return '''<form method="POST">
+    return '''<h1>Ticker Symbol: {}</h1>
+            <form method="POST">
             <input name="name">
             <input type="submit">
             </form></h1>
-            <img src="data:image/png;base64,{}">'''.format(plot1_url)
+            <img src="data:image/png;base64,{}">'''.format(ticker, plot1_url)
             
 def call_hshah():
     return 'Call hshah'

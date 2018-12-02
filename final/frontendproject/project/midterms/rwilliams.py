@@ -45,7 +45,8 @@ def bb(ticker):
         plt.savefig(img, format='png')
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
-        return '<img src="data:image/png;base64,{}">'.format(plot_url)
+        return ''''<h1>Ticker Symbol: {}</h1>
+               <img src="data:image/png;base64,{}">'''.format(ticker, plot_url)
 
 #Flask Apps
 #@app.route("/")
@@ -61,7 +62,7 @@ def stocks():
 def getStock_rwilliams():
     if request.method == 'POST':
         name = request.form['name']
-        return redirect(url_for('midterms.rwilliams', name=name))
+        return redirect(url_for('midterms.getStock_rwilliams', name=name))
         # Stock name is redirected back to the URL for it to be captured by Get
 
     name = request.args.get('name', default='MSFT')  # if key doesn't exist, returns None

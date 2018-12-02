@@ -33,13 +33,14 @@ def stockplot(ticker):
     plt.savefig(img, format='png')
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plots)
+    return ''''<h1>Ticker Symbol: {}</h1>
+               <img src="data:image/png;base64,{}">'''.format(ticker, plots)
 
 #@app.route("/stocks/<string:name>/")
 def getStock():
     if request.method == 'POST':
         name = request.form['name']
-        return redirect(url_for('midterms.bpatel', name=name))
+        return redirect(url_for('midterms.getStock', name=name))
         # Stock name is redirected back to the URL for it to be captured by Get
 
     name = request.args.get('name', default='MSFT')  # if key doesn't exist, returns None
