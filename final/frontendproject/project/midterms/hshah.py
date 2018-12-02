@@ -53,7 +53,7 @@ def stocks_hshah():
     fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
     ax = axs[0]
     ax.plot(stock_data['Close'], marker='', linestyle='-')
-    ax.set_title(ticker+' Close Price (2016)')
+    ax.set_title(ticker+' Close Price (2016 & 2017)')
 
     ax = axs[1]
     ax.plot(spy_data['Close'], marker='', linestyle='-')
