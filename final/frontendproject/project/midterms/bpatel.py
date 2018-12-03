@@ -15,7 +15,6 @@ import base64
 routes = []
 
 def get_adj_close(ticker, start, end):
-    
         start = start
         end = end
         info = web.DataReader(ticker, data_source='yahoo', start=start, end=end)['Adj Close']
@@ -34,6 +33,10 @@ def stockplot(ticker):
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
     return ''''<h1>Ticker Symbol: {}</h1>
+			   <form method="POST">
+			   <input name="name">
+			   <input type="submit">
+			   </form></h1>
                <img src="data:image/png;base64,{}">'''.format(ticker, plots)
 
 #@app.route("/stocks/<string:name>/")
