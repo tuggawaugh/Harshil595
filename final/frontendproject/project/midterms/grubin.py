@@ -4,13 +4,14 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 from pandas_datareader import data as web
 from flask import Flask,redirect,url_for
 from flask import Blueprint, render_template
 from flask import request
 import io
 import base64 
-
+import numpy as np
 
 routes = []
 
@@ -68,14 +69,34 @@ def bb(ticker):
             item['30 Day STD'] = item['Adj Close'].rolling(window=20).std()
             item['Upper Band'] = item['30 Day MA'] + (item['30 Day STD'] * 2)
             item['Lower Band'] = item['30 Day MA'] - (item['30 Day STD'] * 2)
+
+        x = np.arange(0, 10, 0.2)
+        y = np.sin(x)
+        
+        img = io.BytesIO()        # plot it
+        
+        fig = plt.figure(figsize=(8, 6)) 
+        gs = gridspec.GridSpec(2, 1, width_ratios=[1], height_ratios=[3,1]) 
+        ax0 = plt.subplot(gs[0])
+        ax0.plot(x, y)
+        ax1 = plt.subplot(gs[1])
+        ax1.plot(y, x)
+        
+        plt.tight_layout()
+#        plt.savefig('grid_figure.pdf')    
+
     # Simple 30 Day Bollinger Band for Facebook (2016-2017)
-        img = io.BytesIO()
-        tick1[['Adj Close', '30 Day MA', 'Upper Band', 'Lower Band']].plot(figsize=(12,6))
-        plt.title('30 Day Bollinger Band')
-        plt.ylabel('Price (USD)')
+
+    #    tick1[['Adj Close', '30 Day MA', 'Upper Band', 'Lower Band']].plot(figsize=(12,6))
+    #    plt.title('30 Day Bollinger Band')
+    #    plt.ylabel('Price (USD)')
         plt.savefig(img, format='png')
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
+    # generate some data
+
+        
+        
         
         return '''
                 <h1>Ticker Symbol: {}</h1>
