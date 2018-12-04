@@ -45,6 +45,7 @@ var App = function (_React$Component) {
     }, _this.handleSubmit = function (e) {
       console.log('submit button');
       console.log(_this.value);
+      window.open('midterms', "_blank");
       window.open('midterms/bpatel/?name=MSFT', "_blank");
       window.open('midterms/grubin/?name=MSFT', "_blank");
       window.open('midterms/hshah/?name=MSFT', "_blank");
