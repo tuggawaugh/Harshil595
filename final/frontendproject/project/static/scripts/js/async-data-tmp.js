@@ -44,12 +44,12 @@ var App = function (_React$Component) {
       unitedStates: (0, _utils.getStates)()
     }, _this.handleSubmit = function (e) {
       console.log('submit button');
-      console.log(_this.value);
+      console.log(_this.state.value);
       window.open('midterms', "_blank");
-      window.open('midterms/bpatel/?name=MSFT', "_blank");
-      window.open('midterms/grubin/?name=MSFT', "_blank");
-      window.open('midterms/hshah/?name=MSFT', "_blank");
-      window.open('midterms/rwilliams/?name=MSFT', "_blank");
+      window.open('midterms/bpatel/?name=' + _this.state.value, "_blank");
+      window.open('midterms/grubin/?name=' + _this.state.value, "_blank");
+      window.open('midterms/hshah/?name=' + _this.state.value, "_blank");
+      window.open('midterms/rwilliams/?name=' + _this.state.value, "_blank");
     }, _this.requestTimer = null, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -86,7 +86,7 @@ var App = function (_React$Component) {
             items: this.state.unitedStates,
 
             getItemValue: function getItemValue(item) {
-              return item.name;
+              return item.abbr;
             },
 
             onSelect: function onSelect(value, item) {
