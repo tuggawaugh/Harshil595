@@ -6,6 +6,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from pandas_datareader import data as web
+from pandas_datareader._utils import RemoteDataError
 from flask import Flask,redirect,url_for
 from flask import Blueprint, render_template
 from flask import request
@@ -53,53 +54,58 @@ def get_adj_close(ticker, start, end):
         '''
         start = start
         end = end
-        info = web.DataReader(ticker, data_source='yahoo', start=start, end=end)['Adj Close']
-        return pd.DataFrame(info)
+        try:
+            info = web.DataReader(ticker, data_source='yahoo', start=start, end=end)['Adj Close']
+            return pd.DataFrame(info)
+        except RemoteDataError:
+            print("No information for ticker '%s'" % ticker)
+            return -1
 
 
 
 
-def bb(ticker): 
-    # Get Adjusted Closing Prices for Input and Tesla between 2016-2017
-        tick1 = get_adj_close(ticker, '1/2/2017', '26/10/2018')
-        tesla = get_adj_close('tsla', '1/2/2017', '26/10/2018')
-    # Calculate 30 Day Moving Average, Std Deviation, Upper Band and Lower Band
-        for item in (tick1, tesla):
-            item['30 Day MA'] = item['Adj Close'].rolling(window=20).mean()
-            item['30 Day STD'] = item['Adj Close'].rolling(window=20).std()
-            item['Upper Band'] = item['30 Day MA'] + (item['30 Day STD'] * 2)
-            item['Lower Band'] = item['30 Day MA'] - (item['30 Day STD'] * 2)
+def bb(ticker):
+    try:
+        # Get Adjusted Closing Prices for Input
+        tick1 = get_adj_close(ticker, '1/1/2016', '31/12/2017')
 
+        # Calculate RSI
         x = np.arange(0, 10, 0.2)
         y = np.sin(x)
         
-        img = io.BytesIO()        # plot it
-        
+        img = io.BytesIO()
+
         fig = plt.figure(figsize=(8, 6)) 
         gs = gridspec.GridSpec(2, 1, width_ratios=[1], height_ratios=[3,1]) 
         ax0 = plt.subplot(gs[0])
-        ax0.plot(x, y)
+        ax0.plot(tick1[['Adj Close']])
         ax1 = plt.subplot(gs[1])
-        ax1.plot(y, x)
+        ax1.plot(tick1[['Adj Close']])
         
-        plt.tight_layout()
-#        plt.savefig('grid_figure.pdf')    
-
-    # Simple 30 Day Bollinger Band for Facebook (2016-2017)
-
-    #    tick1[['Adj Close', '30 Day MA', 'Upper Band', 'Lower Band']].plot(figsize=(12,6))
-    #    plt.title('30 Day Bollinger Band')
-    #    plt.ylabel('Price (USD)')
+#        plt.tight_layout()
+ 
+        plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=.5)
+#        
+#        left  = 0.125  # the left side of the subplots of the figure
+#        right = 0.9    # the right side of the subplots of the figure
+#        bottom = 0.1   # the bottom of the subplots of the figure
+#        top = 0.9      # the top of the subplots of the figure
+#        wspace = 0.2   # the amount of width reserved for blank space between subplots
+#        hspace = 0.9   # the amount of height reserved for white space between subplots
+# 
+        ax0.set_title('Price')
+        ax0.set_ylabel('Price (USD)')
+        ax1.set_ylabel('RSI')
         plt.savefig(img, format='png')
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
-    # generate some data
-
-        
-        
-        
+    except:
+        print('exception')
         return '''
-                <h1>Ticker Symbol: {}</h1>
+                <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
+    else:
+        return '''
+                <h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
                 <div class="container">
                 <div class="centered"><h1><form method="POST">
                 <input name="name">
