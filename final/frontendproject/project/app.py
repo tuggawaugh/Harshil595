@@ -16,9 +16,9 @@ app.register_blueprint(mod, url_prefix='/midterms')
 def index():
     return render_template('index.html')
 
-@app.route('/index2.html')
-def index2():
-    return render_template('index2.html')
+#@app.route('/index2.html')
+#def index2():
+#    return render_template('index2.html')
 
 
 #@app.route('/midterms')
