@@ -34,48 +34,54 @@ def stocks_hshah():
 
     # store the ticker symbol of the stock in 'ticker' string object
     ticker = str(name)
-    # set the start and end date and the first and last day of FY2016
-    start_date = '2016-01-01'
-    end_date = '2017-12-31'
-    # User pandas_reader.data.DataReader to load the desired stock and
-    # S&P ('spy') data into respective frames using Yahoo's API
-    stock_data = pd.DataFrame()
-    spy_data = pd.DataFrame()
-    stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date)
-    spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date)
-
-    # Plot the graphs using matplotlib and encode them using base64 to
-    # publish them on the HTML
-    img11 = io.BytesIO()
-    plt.clf()
-    # subplot feature is used to show the side-by-side comparison of the
-    # stock and S&P's performance
-    fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
-    ax = axs[0]
-    ax.plot(stock_data['Close'], marker='', linestyle='-')
-    ax.set_title(ticker+' Close Price (2016 & 2017)')
-
-    ax = axs[1]
-    ax.plot(spy_data['Close'], marker='', linestyle='-')
-    ax.set_title('S&P 500 Close Price (2016)')
-
-    # Rotate date labels automatically
-    fig.autofmt_xdate()
-    plt.show()
-
-    # Encode and publish the Graph
-    fig.suptitle(ticker+' v S&P 500 Comparison (2016)')
-    plt.savefig(img11, format='png')
-    img11.seek(0)
-    plot1_url = ""
-    plot1_url = base64.b64encode(img11.getvalue()).decode()
-
-    return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
-            <form method="POST">
-            <input name="name">
-            <input type="submit">
-            </form></h1>
-            <img src="data:image/png;base64,{}">'''.format(ticker, plot1_url)
+    
+    try:
+        # set the start and end date and the first and last day of FY2016
+        start_date = '2016-01-01'
+        end_date = '2017-12-31'
+        # User pandas_reader.data.DataReader to load the desired stock and
+        # S&P ('spy') data into respective frames using Yahoo's API
+        stock_data = pd.DataFrame()
+        spy_data = pd.DataFrame()
+        stock_data = data.DataReader(ticker, 'yahoo', start_date, end_date)
+        spy_data = data.DataReader('SPY', 'yahoo', start_date, end_date)
+    
+        # Plot the graphs using matplotlib and encode them using base64 to
+        # publish them on the HTML
+        img11 = io.BytesIO()
+        plt.clf()
+        # subplot feature is used to show the side-by-side comparison of the
+        # stock and S&P's performance
+        fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
+        ax = axs[0]
+        ax.plot(stock_data['Close'], marker='', linestyle='-')
+        ax.set_title(ticker+' Close Price (2016 & 2017)')
+    
+        ax = axs[1]
+        ax.plot(spy_data['Close'], marker='', linestyle='-')
+        ax.set_title('S&P 500 Close Price (2016)')
+    
+        # Rotate date labels automatically
+        fig.autofmt_xdate()
+        plt.show()
+    
+        # Encode and publish the Graph
+        fig.suptitle(ticker+' v S&P 500 Comparison (2016)')
+        plt.savefig(img11, format='png')
+        img11.seek(0)
+        plot1_url = ""
+        plot1_url = base64.b64encode(img11.getvalue()).decode()
+    except:
+        print('exception')
+        return '''
+                <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
+    else:
+        return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
+                <form method="POST">
+                <input name="name">
+                <input type="submit">
+                </form></h1>
+                <img src="data:image/png;base64,{}">'''.format(ticker, plot1_url)
             
 def call_hshah():
     return 'Call hshah'

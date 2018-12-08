@@ -28,6 +28,7 @@ def get_adj_close(ticker, start, end):
 
 # Defining the Bollinger Band Function
 def bb(ticker): 
+    try:
     # Get Adjusted Closing Prices for Chosen Stock and Tesla between Jan 2016 - December 2017
         tick1 = get_adj_close(ticker, '1/1/2016', '31/12/2017')
         tesla = get_adj_close('tsla', '1/1/2016', '31/12/2017')
@@ -45,6 +46,11 @@ def bb(ticker):
         plt.savefig(img, format='png')
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
+    except:
+        print('exception')
+        return '''
+                <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
+    else:
         return ''''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
 				<form method="POST">
 				<input name="name">
