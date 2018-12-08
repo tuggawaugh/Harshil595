@@ -51,7 +51,7 @@ def bb(ticker):
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return ''''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
+        return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
 				<form method="POST">
 				<input name="name">
 				<input type="submit">
