@@ -132,7 +132,8 @@ def bb(ticker):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''
-                <h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
+                <h1>Relative Stregnth Index for ticker: {}  (Jan 2016 - Dec 2017)</h1>
+                <h3>Relative Stregnth Index (RSI) is ipsum ... </h3>
                 <div class="container">
                 <div class="centered"><h1><form method="POST">
                 <input name="name">
