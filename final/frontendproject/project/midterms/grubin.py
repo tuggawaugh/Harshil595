@@ -100,8 +100,8 @@ def bb(ticker):
         tick1['rsi'] = rsiFunc(tick1['Adj Close'], 14)
         
         img = io.BytesIO()
-
-        fig = plt.figure(figsize=(8, 6)) 
+        
+        fig = plt.figure(figsize=(12, 6)) 
         gs = gridspec.GridSpec(2, 1, width_ratios=[1], height_ratios=[3,1]) 
         ax0 = plt.subplot(gs[0])
         ax0.plot(tick1[['Adj Close']])
