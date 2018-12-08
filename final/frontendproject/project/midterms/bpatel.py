@@ -23,7 +23,7 @@ def get_adj_close(ticker, start, end):
 
 def stockplot(ticker):
     img = io.BytesIO()
-    tick = get_adj_close(ticker, '01/01/2016', '31/12/2017')
+    tick = get_adj_close(ticker, '1/1/2016', '31/12/2017')
 #    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
     tick[['Adj Close']].plot(figsize=(10,6)) 
 #    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
@@ -32,7 +32,7 @@ def stockplot(ticker):
     plt.savefig(img, format='png')
     img.seek(0)
     plots = base64.b64encode(img.getvalue()).decode()
-    return ''''<h1>Ticker Symbol: {}</h1>
+    return ''''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
 			   <form method="POST">
 			   <input name="name">
 			   <input type="submit">

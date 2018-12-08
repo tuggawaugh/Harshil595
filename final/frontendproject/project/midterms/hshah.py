@@ -70,7 +70,7 @@ def stocks_hshah():
     plot1_url = ""
     plot1_url = base64.b64encode(img11.getvalue()).decode()
 
-    return '''<h1>Ticker Symbol: {}</h1>
+    return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
             <form method="POST">
             <input name="name">
             <input type="submit">
