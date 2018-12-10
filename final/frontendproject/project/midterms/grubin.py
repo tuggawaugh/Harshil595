@@ -27,7 +27,9 @@ def stocks():
 
     name = request.args.get('name', default='MSFT') #if key doesn't exist, returns None
     ticker=str(name)
-    return bb(ticker)
+    start_date = request.args.get('startDate', default='2016-01-01')  # if key doesn't exist, returns None
+    end_date = request.args.get('endDate', default='2017-12-31')  # if key doesn't exist, returns None
+    return bb(ticker, str(start_date), str(end_date))
 
 """    return 'Call grubin'
 """
@@ -91,10 +93,10 @@ def rsiFunc(prices, n=14):
 
 
 
-def bb(ticker):
+def bb(ticker, start, end):
     try:
         # Get Adjusted Closing Prices for Input
-        tick1 = get_adj_close(ticker, '1/1/2016', '31/12/2017')
+        tick1 = get_adj_close(ticker, start, end)
 
         # Calculate RSI        
         tick1['rsi'] = rsiFunc(tick1['Adj Close'], 14)
@@ -132,12 +134,12 @@ def bb(ticker):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''
-                <h1>Relative Stregnth Index for ticker: {}  (Jan 2016 - Dec 2017)</h1>
-                <h3>Relative Stregnth Index (RSI) is ipsum ... </h3>
+                <h1>Relative Stregnth Index for ticker: {}  ({} - {})</h1>
+                <h3>Midterm Project: Gordon Rubin</h3>
                 <div class="container">
                 <div class="centered"><h1><form method="POST">
                 <input name="name">
                 <input type="submit">
                 </form></h1></div></div>
-                <h1><img src="data:image/png;base64,{}"></h1>'''.format(ticker, plot_url) 
+                <h1><img src="data:image/png;base64,{}"></h1>'''.format(ticker, start, end, plot_url) 
         

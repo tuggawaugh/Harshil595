@@ -27,11 +27,11 @@ def get_adj_close(ticker, start, end):
         return pd.DataFrame(info)
 
 # Defining the Bollinger Band Function
-def bb(ticker): 
+def bb(ticker, start, end): 
     try:
     # Get Adjusted Closing Prices for Chosen Stock and Tesla between Jan 2016 - December 2017
-        tick1 = get_adj_close(ticker, '1/1/2016', '31/12/2017')
-        tesla = get_adj_close('tsla', '1/1/2016', '31/12/2017')
+        tick1 = get_adj_close(ticker, start, end)
+        tesla = get_adj_close('tsla', start, end)
     # Calculate 30 Day Moving Average, Std Deviation, Upper Band and Lower Band
         for item in (tick1, tesla):
             item['30 Day MA'] = item['Adj Close'].rolling(window=20).mean()
@@ -51,13 +51,13 @@ def bb(ticker):
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>30 Day Bollinger Bands for ticker: {}  (Jan 2016 - Dec 2017)</h1>
+        return '''<h1>30 Day Bollinger Bands for ticker: {}  ({} - {})</h1>
                 <h3>Midterm Project: Richard Williams</h3>
 				<form method="POST">
 				<input name="name">
 				<input type="submit">
 				</form></h1>
-				<img src="data:image/png;base64,{}">'''.format(ticker, plot_url)
+				<img src="data:image/png;base64,{}">'''.format(ticker, start, end, plot_url)
 
 #Flask Apps
 #@app.route("/")
@@ -80,8 +80,9 @@ def getStock_rwilliams():
 
     # store the ticker symbol of the stock in 'ticker' string object
     ticker = str(name)
-    
-    return bb(name)
+    start_date = request.args.get('startDate', default='2016-01-01')  # if key doesn't exist, returns None
+    end_date = request.args.get('endDate', default='2017-12-31')  # if key doesn't exist, returns None
+    return bb(name, str(start_date), str(end_date))
 
 
 def call_rwilliams():

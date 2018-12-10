@@ -21,10 +21,10 @@ def get_adj_close(ticker, start, end):
         return pd.DataFrame(info)
 
 
-def stockplot(ticker):
+def stockplot(ticker, start, end):
     try:
         img = io.BytesIO()
-        tick = get_adj_close(ticker, '1/1/2016', '31/12/2017')
+        tick = get_adj_close(ticker, start, end)
     #    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
         tick[['Adj Close']].plot(figsize=(12,6)) 
     #    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
@@ -39,12 +39,12 @@ def stockplot(ticker):
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
+        return '''<h1>Ticker Symbol: {}  ({} - {})</h1>
     			   <form method="POST">
     			   <input name="name">
     			   <input type="submit">
     			   </form></h1>
-                   <img src="data:image/png;base64,{}">'''.format(ticker, plots)
+                   <img src="data:image/png;base64,{}">'''.format(ticker, start, end, plots)
     
 #@app.route("/stocks/<string:name>/")
 def getStock():
@@ -57,8 +57,9 @@ def getStock():
 
     # store the ticker symbol of the stock in 'ticker' string object
     ticker = str(name)
-
-    return stockplot(ticker)
+    start_date = request.args.get('startDate', default='2016-01-01')  # if key doesn't exist, returns None
+    end_date = request.args.get('endDate', default='2017-12-31')  # if key doesn't exist, returns None
+    return stockplot(ticker, str(start_date), str(end_date))
 
 
 def call_bpatel():

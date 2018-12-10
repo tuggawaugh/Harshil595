@@ -31,6 +31,8 @@ def stocks_hshah():
         # Stock name is redirected back to the URL for it to be captured by Get
 
     name = request.args.get('name', default='MSFT')  # if key doesn't exist, returns None
+    start_date = request.args.get('startDate', default='2016-01-01')  # if key doesn't exist, returns None
+    end_date = request.args.get('endDate', default='2017-12-31')  # if key doesn't exist, returns None
 
     # store the ticker symbol of the stock in 'ticker' string object
     ticker = str(name)
@@ -53,6 +55,7 @@ def stocks_hshah():
         # subplot feature is used to show the side-by-side comparison of the
         # stock and S&P's performance
         fig, axs = plt.subplots(nrows=1, ncols=2, sharex=True)
+        fig.set_size_inches(12, 6)
         ax = axs[0]
         ax.plot(stock_data['Close'], marker='', linestyle='-')
         ax.set_title(ticker+' Close Price (2016 & 2017)')
