@@ -38,9 +38,6 @@ def stocks_hshah():
     ticker = str(name)
     
     try:
-        # set the start and end date and the first and last day of FY2016
-        start_date = '2016-01-01'
-        end_date = '2017-12-31'
         # User pandas_reader.data.DataReader to load the desired stock and
         # S&P ('spy') data into respective frames using Yahoo's API
         stock_data = pd.DataFrame()
@@ -84,7 +81,7 @@ def stocks_hshah():
                 <input name="name">
                 <input type="submit">
                 </form></h1>
-                <img src="data:image/png;base64,{}">'''.format(ticker, start, end, plot1_url)
+                <img src="data:image/png;base64,{}">'''.format(ticker, start_date, end_date, plot1_url)
             
 def call_hshah():
     return 'Call hshah'
