@@ -79,12 +79,12 @@ def stocks_hshah():
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>Ticker Symbol: {}  (Jan 2016 - Dec 2017)</h1>
+        return '''<h1>Ticker Symbol: {}  ({} - {})</h1>
                 <form method="POST">
                 <input name="name">
                 <input type="submit">
                 </form></h1>
-                <img src="data:image/png;base64,{}">'''.format(ticker, plot1_url)
+                <img src="data:image/png;base64,{}">'''.format(ticker, start, end, plot1_url)
             
 def call_hshah():
     return 'Call hshah'
