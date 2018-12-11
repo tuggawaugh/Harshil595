@@ -134,7 +134,7 @@ def bb(ticker, start, end):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''
-                <h1>Relative Stregnth Index for ticker: {}  ({} - {})</h1>
+                <h1>Relative Strength Index for ticker: {}  ({} - {})</h1>
                 <h3>Midterm Project: Gordon Rubin</h3>
                 <div class="container">
                 <div class="centered"><h1><form method="POST">
