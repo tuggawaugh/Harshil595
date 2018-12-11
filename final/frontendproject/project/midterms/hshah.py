@@ -56,10 +56,12 @@ def stocks_hshah():
         ax = axs[0]
         ax.plot(stock_data['Close'], marker='', linestyle='-')
         ax.set_title(ticker+' Close Price')
+        ax.set_ylabel('Price (USD)')
     
         ax = axs[1]
         ax.plot(spy_data['Close'], marker='', linestyle='-')
         ax.set_title('S&P 500 Close Price')
+        ax.set_ylabel('Price (USD)')
     
         # Rotate date labels automatically
         fig.autofmt_xdate()
@@ -77,7 +79,7 @@ def stocks_hshah():
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''
-                <title>Comparsion with S&P 500 </title>
+                <title>Comparative Analysis (vs. S&P 500) </title>
                 <h1>Price Comparison with S&P 500 for Ticker: {}  ({} - {})</h1>
                 <h3>Midterm Project: Harshil Shah</h3>
 				<form method="POST">
