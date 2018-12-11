@@ -51,7 +51,8 @@ def bb(ticker, start, end):
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>30 Day Bollinger Bands for ticker: {}  ({} - {})</h1>
+        return '''<title>Bollinger Bands</title>
+                <h1>30 Day Bollinger Bands for ticker: {}  ({} - {})</h1>
                 <h3>Midterm Project: Richard Williams</h3>
 				<form method="POST">
 				<input name="name">
