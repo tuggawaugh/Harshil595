@@ -55,18 +55,18 @@ def stocks_hshah():
         fig.set_size_inches(12, 6)
         ax = axs[0]
         ax.plot(stock_data['Close'], marker='', linestyle='-')
-        ax.set_title(ticker+' Close Price (2016 & 2017)')
+        ax.set_title(ticker+' Close Price')
     
         ax = axs[1]
         ax.plot(spy_data['Close'], marker='', linestyle='-')
-        ax.set_title('S&P 500 Close Price (2016 & 2017)')
+        ax.set_title('S&P 500 Close Price')
     
         # Rotate date labels automatically
         fig.autofmt_xdate()
         plt.show()
     
         # Encode and publish the Graph
-        fig.suptitle(ticker+' v S&P 500 Comparison (2016 & 2017)')
+        fig.suptitle(ticker+' v S&P 500 Comparison')
         plt.savefig(img11, format='png')
         img11.seek(0)
         plot1_url = ""
