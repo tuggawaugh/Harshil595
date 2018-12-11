@@ -59,7 +59,7 @@ def stocks_hshah():
     
         ax = axs[1]
         ax.plot(spy_data['Close'], marker='', linestyle='-')
-        ax.set_title('S&P 500 Close Price (2016)')
+        ax.set_title('S&P 500 Close Price (2016 & 2017)')
     
         # Rotate date labels automatically
         fig.autofmt_xdate()
