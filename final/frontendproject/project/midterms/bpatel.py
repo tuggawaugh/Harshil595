@@ -39,7 +39,9 @@ def stockplot(ticker, start, end):
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>Ticker Symbol: {}  ({} - {})</h1>
+        return '''<title>Historical Trend</title>
+                   <h1>Historical trend: {}  ({} - {})</h1>
+                    <h3>Midterm Project: Binta Patel</h3>
     			   <form method="POST">
     			   <input name="name">
     			   <input type="submit">
