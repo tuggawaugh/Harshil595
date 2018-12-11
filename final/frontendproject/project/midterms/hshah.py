@@ -66,7 +66,7 @@ def stocks_hshah():
         plt.show()
     
         # Encode and publish the Graph
-        fig.suptitle(ticker+' v S&P 500 Comparison (2016)')
+        fig.suptitle(ticker+' v S&P 500 Comparison (2016 & 2017)')
         plt.savefig(img11, format='png')
         img11.seek(0)
         plot1_url = ""
