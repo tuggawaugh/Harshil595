@@ -80,7 +80,7 @@ def stocks_hshah():
     else:
         return '''
                 <title>Comparative Analysis (vs. S&P 500) </title>
-                <h1>Price Comparison with S&P 500 for Ticker: {}  ({} - {})</h1>
+                <h1>Comparative Analysis with S&P 500: {}  ({} - {})</h1>
                 <h3>Midterm Project: Harshil Shah</h3>
 				<form method="POST">
                 <input name="name">
