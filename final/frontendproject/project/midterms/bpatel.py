@@ -28,7 +28,7 @@ def stockplot(ticker, start, end):
     #    tick('ma50') = pd.rolling_mean(df['Adj Close'], 50)
         tick[['Adj Close']].plot(figsize=(12,6)) 
     #    tick[['Adj Close', 'ma50']].plot(figsize=(10,6))
-        plt.title('Historical Price Trend')
+        plt.suptitle('Historical Price Trend')
         plt.ylabel('Price (USD)')
         plt.savefig(img, format='png')
         img.seek(0)
@@ -40,7 +40,7 @@ def stockplot(ticker, start, end):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''<title>Historical Trend</title>
-                   <h1>Historical trend: {}  ({} - {})</h1>
+                   <h1>Historical Trend: {}  ({} - {})</h1>
                     <h3>Midterm Project: Binta Patel</h3>
     			   <form method="POST">
     			   <input name="name">
