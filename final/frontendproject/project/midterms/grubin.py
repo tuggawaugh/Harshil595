@@ -110,6 +110,7 @@ def bb(ticker, start, end):
         ax1 = plt.subplot(gs[1])
         ax1.plot(tick1['rsi'])
         fig.autofmt_xdate()
+        fig.suptitle(ticker + ': Relative Strength Index')
         
 #        plt.tight_layout()
  
@@ -134,7 +135,7 @@ def bb(ticker, start, end):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''<title>RSI</title>
-                <h1>Relative Strength Index for ticker: {}  ({} - {})</h1>
+                <h1>Relative Strength Index: {}  ({} - {})</h1>
                 <h3>Midterm Project: Gordon Rubin</h3>
                 <div class="container">
                 <div class="centered"><h1><form method="POST">

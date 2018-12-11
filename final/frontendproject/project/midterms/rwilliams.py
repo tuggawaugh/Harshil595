@@ -32,16 +32,16 @@ def bb(ticker, start, end):
     # Get Adjusted Closing Prices for Chosen Stock and Tesla between Jan 2016 - December 2017
         tick1 = get_adj_close(ticker, start, end)
         tesla = get_adj_close('tsla', start, end)
-    # Calculate 30 Day Moving Average, Std Deviation, Upper Band and Lower Band
+    # Calculate 30-Day Moving Average, Std Deviation, Upper Band and Lower Band
         for item in (tick1, tesla):
-            item['30 Day MA'] = item['Adj Close'].rolling(window=20).mean()
-            item['30 Day STD'] = item['Adj Close'].rolling(window=20).std()
-            item['Upper Band'] = item['30 Day MA'] + (item['30 Day STD'] * 2)
-            item['Lower Band'] = item['30 Day MA'] - (item['30 Day STD'] * 2)
-    # Simple 30 Day Bollinger Band for Facebook (2016-2017)
+            item['30-Day MA'] = item['Adj Close'].rolling(window=20).mean()
+            item['30-Day STD'] = item['Adj Close'].rolling(window=20).std()
+            item['Upper Band'] = item['30-Day MA'] + (item['30-Day STD'] * 2)
+            item['Lower Band'] = item['30-Day MA'] - (item['30-Day STD'] * 2)
+    # Simple 30-Day Bollinger Band for Facebook (2016-2017)
         img = io.BytesIO()
-        tick1[['Adj Close', '30 Day MA', 'Upper Band', 'Lower Band']].plot(figsize=(12,6))
-        plt.title('30 Day Bollinger Band')
+        tick1[['Adj Close', '30-Day MA', 'Upper Band', 'Lower Band']].plot(figsize=(12,6))
+        plt.suptitle('30-Day Bollinger Band')
         plt.ylabel('Price (USD)')
         plt.savefig(img, format='png')
         img.seek(0)
@@ -52,7 +52,7 @@ def bb(ticker, start, end):
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
         return '''<title>Bollinger Bands</title>
-                <h1>30 Day Bollinger Bands for ticker: {}  ({} - {})</h1>
+                <h1>30-Day Bollinger Bands: {}  ({} - {})</h1>
                 <h3>Midterm Project: Richard Williams</h3>
 				<form method="POST">
 				<input name="name">
