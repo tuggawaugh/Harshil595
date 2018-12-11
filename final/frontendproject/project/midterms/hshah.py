@@ -76,7 +76,9 @@ def stocks_hshah():
         return '''
                 <h1>No entry for Ticker Symbol: {}</h1>'''.format(ticker) 
     else:
-        return '''<h1>Price Comparison with S&P 500 for Ticker: {}  ({} - {})</h1>
+        return '''
+                <title>Comparsion with S&P 500 </title>
+                <h1>Price Comparison with S&P 500 for Ticker: {}  ({} - {})</h1>
                 <h3>Midterm Project: Harshil Shah</h3>
 				<form method="POST">
                 <input name="name">
