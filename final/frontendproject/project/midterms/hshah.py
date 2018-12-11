@@ -67,6 +67,7 @@ def stocks_hshah():
     
         # Encode and publish the Graph
         fig.suptitle(ticker+' v S&P 500 Comparison')
+        plt.ylabel('Price (USD)')
         plt.savefig(img11, format='png')
         img11.seek(0)
         plot1_url = ""
